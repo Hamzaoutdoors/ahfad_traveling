@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: ahfad_traveling_development
+
+test:
+  <<: *default
+  database: ahfad_traveling_test
+
+production:
+  <<: *default
+  database: ahfad_traveling_production
+  username: ahfad_traveling
+  password: <%= ENV["AHFAD_TRAVELING_DATABASE_PASSWORD"] %>
